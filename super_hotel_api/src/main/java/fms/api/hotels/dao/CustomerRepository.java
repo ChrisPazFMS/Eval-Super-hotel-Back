@@ -7,5 +7,4 @@ import fms.api.hotels.entities.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
 }

@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "app_role")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +16,9 @@ import javax.persistence.Id;
 public class AppRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private String rolename;
+
+    @Column(name = "role_name")
+    private String roleName;
 }

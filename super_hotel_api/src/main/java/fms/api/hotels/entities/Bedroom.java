@@ -1,39 +1,41 @@
 package fms.api.hotels.entities;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// L'entité Bedroom représente une chambre d'hôtel qui appartient à un hôtel et qui peut être réservée.
+import javax.persistence.*;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "bedrooms")
 public class Bedroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "number")
     private int number;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "available")
     private boolean available;
-    // Une chambre appartient à un hôtel, donc on définit une relation
-    // plusieurs-à-un entre Bedroom et Hotel.
+
+    // Une chambre appartient à un hôtel.
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
-    // Une chambre peut avoir plusieurs réservations, donc on définit une relation
-    // un-à-plusieurs entre Bedroom et Reservation.
-    @OneToMany(mappedBy = "bedroom")
+
+    // Une chambre peut avoir plusieurs réservations.
+    @OneToMany(mappedBy = "bedroom", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations;
 }

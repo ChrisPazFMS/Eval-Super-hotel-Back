@@ -7,5 +7,4 @@ import fms.api.hotels.entities.Reservation;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    // Add custom query methods here if needed
 }

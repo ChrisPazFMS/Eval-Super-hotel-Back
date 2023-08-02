@@ -9,6 +9,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "order_items") // Spécifie le nom de la table dans la base de données
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,13 +17,20 @@ import javax.persistence.*;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "price")
     private double price;
 
     @ManyToOne
-    private Hotel otel;
+    private Hotel hotel;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

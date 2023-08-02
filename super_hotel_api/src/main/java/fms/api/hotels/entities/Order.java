@@ -18,11 +18,18 @@ import java.util.Date;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "date")
     private Date date;
+
     @OneToMany(mappedBy = "order")
     private Collection<OrderItem> reservationItems;
+
     @ManyToOne
     private Customer customer;
+
+    @Column(name = "amount")
     private double amount;
 }
