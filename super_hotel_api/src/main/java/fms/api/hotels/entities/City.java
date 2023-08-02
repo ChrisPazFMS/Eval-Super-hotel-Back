@@ -3,8 +3,11 @@ package fms.api.hotels.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -23,5 +26,6 @@ public class City {
 
     // Une ville peut avoir plusieurs hôtels.
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Hotel> hotels;
+    @JsonIgnore
+    private List<Hotel> hotels = new ArrayList<>();
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -34,5 +35,5 @@ public class Hotel {
 
     // Un hôtel peut avoir plusieurs chambres.
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Bedroom> bedrooms;
+    private List<Bedroom> bedrooms = new ArrayList<>();
 }

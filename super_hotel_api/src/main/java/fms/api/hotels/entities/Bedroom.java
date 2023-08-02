@@ -3,8 +3,10 @@ package fms.api.hotels.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Data
@@ -33,6 +35,7 @@ public class Bedroom {
     // Une chambre appartient à un hôtel.
     @ManyToOne
     @JoinColumn(name = "hotel_id")
+    @JsonIgnore
     private Hotel hotel;
 
     // Une chambre peut avoir plusieurs réservations.

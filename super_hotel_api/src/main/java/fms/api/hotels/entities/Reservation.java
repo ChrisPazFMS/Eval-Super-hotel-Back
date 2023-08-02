@@ -17,14 +17,16 @@ public class Reservation {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "start_date") // Date de début de la réservation
+    // Date de début de la réservation
+    @Column(name = "start_date")
     private String startDate;
 
-    @Column(name = "end_date") // Date de fin de la réservation
+    // Date de fin de la réservation
+    @Column(name = "end_date")
     private String endDate;
 
     // Gérer les chambres sans conflits de réservation.
     @ManyToOne
     @JoinColumn(name = "bedroom_id")
-    private Bedroom bedroom; // Pour la réservation.
+    private Bedroom bedroom;
 }
