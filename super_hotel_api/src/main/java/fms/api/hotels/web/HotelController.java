@@ -114,4 +114,11 @@ public class HotelController {
         int totalAvailableBedrooms = hotelService.getTotalNumberOfAvailableBedroomsInCity(cityId);
         return new ResponseEntity<>(totalAvailableBedrooms, HttpStatus.OK);
     }
+
+    @GetMapping("/cities/{cityId}/hotels")
+    public ResponseEntity<List<Hotel>> getHotelsByCity(@PathVariable Long cityId) {
+        List<Hotel> hotels = hotelService.getHotelsByCity(cityId);
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
 }

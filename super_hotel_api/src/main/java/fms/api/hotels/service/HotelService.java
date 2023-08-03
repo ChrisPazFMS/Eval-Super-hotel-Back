@@ -102,4 +102,14 @@ public class HotelService {
         }
     }
 
+    public List<Hotel> getHotelsByCity(Long cityId) {
+        System.out.println("getHotelsByCity : " + cityId);
+        // Implémentez le code pour récupérer les hôtels de la ville par son ID depuis
+        // la base de données
+        // Par exemple, vous pouvez utiliser la méthode de votre repository pour
+        // récupérer les hôtels de la ville.
+        // Ici, nous supposons que vous avez un repository appelé "hotelRepository".
+        return hotelRepository.findByCityId(cityId);
+    }
+
 }

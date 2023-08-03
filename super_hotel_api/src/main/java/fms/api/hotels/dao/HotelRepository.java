@@ -1,5 +1,7 @@
 package fms.api.hotels.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +19,6 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
     // Requête pour obtenir le nombre total de chambres disponibles dans la ville
     @Query("SELECT COUNT(hb) FROM Hotel h JOIN h.bedrooms hb WHERE h.city.id = :cityId AND hb.available = true")
     int getTotalNumberOfAvailableBedroomsInCity(@Param("cityId") Long cityId);
+
+    List<Hotel> findByCityId(Long cityId);
 }
